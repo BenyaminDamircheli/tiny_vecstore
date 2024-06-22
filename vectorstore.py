@@ -50,7 +50,7 @@ class TinyVectorStore:
         if self.similarity_metric == similarity_metric.COSINE:
             self.sim_func = self.cosine_sim
         elif self.similarity_metric == similarity_metric.EUCLIDEAN:
-            self.sim_func = self.euclidean_sim
+            self.sim_func = self.euclidean_dist
         else:
             raise ValueError(f"Invalid similarity metric: {self.similarity_metric}")
 
@@ -166,7 +166,7 @@ model = SentenceTransformer('sentence-transformers/all-MiniLM-L12-v2')
 docs = document.split("\n")
 
 print(f"Loaded {len(docs)} documents")
-vectorstore = TinyVectorStore.from_docs(docs, embedding_model=model, metric=similarity_metric.COSINE)
+vectorstore = TinyVectorStore.from_docs(docs, embedding_model=model, metric=similarity_metric.EUCLIDEAN)
 print(f"Building TinyVectorStore for querying with {len(docs)} documents")
 
 # Search for the most similar documents to a query
