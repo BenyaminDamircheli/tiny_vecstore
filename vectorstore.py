@@ -44,7 +44,7 @@ class TinyVectorStore:
     def set_dist_metric(self, metric: similarity_metric):
         assert isinstance(metric, similarity_metric), "Invalid metric"
         self.similarity_metric = metric
-        self.sim_func = sefl.set_sim_func()
+        self.sim_func = self.set_sim_func()
 
     def set_sim_func(self):
         if self.similarity_metric == similarity_metric.COSINE:
