@@ -175,4 +175,4 @@ results, execution_time = vectorstore.search(query, k=2)
 
 
 print(f"Most similar documents = {results[0]}")
-print(f"Similarity scores = {results[1]} using '{vectorstore.similarity_metric.name}' metric")
+print(f"Similarity score = {results[1]} using '{vectorstore.similarity_metric.name}' metric")
