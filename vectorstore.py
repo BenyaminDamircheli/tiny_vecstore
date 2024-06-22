@@ -59,7 +59,7 @@ class TinyVectorStore:
         cls, 
         docs: List[str], 
         embedding_model: SentenceTransformer = None, 
-        metric = similarity_metric.COSINE
+        metric: similarty_metric = similarity_metric.COSINE
     ) -> "TinyVectorStore":
 
         """
