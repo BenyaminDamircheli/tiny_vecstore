@@ -7,6 +7,7 @@ from functools import wraps
 
 from documents import document
 
+#using Enum to make it easier to access the similarity metric using dot notation.
 class similarity_metric(Enum):
     COSINE = 0
     EUCLIDEAN = 1
