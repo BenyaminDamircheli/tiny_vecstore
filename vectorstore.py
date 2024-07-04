@@ -60,7 +60,7 @@ class TinyVectorStore:
         cls, 
         docs: List[str], 
         embedding_model: SentenceTransformer = None, 
-        metric: similarty_metric = similarity_metric.COSINE
+        metric: similarity_metric = similarity_metric.COSINE
     ) -> "TinyVectorStore":
 
         """
@@ -84,8 +84,8 @@ class TinyVectorStore:
     @timer
     def search(self, query:str, k:int=5):
         """
-        Searches for the top k most similar documents to the query. Returns the cosine similarity 
-        scores.
+        Searches for the top k most similar documents to the query. Returns the cosine similarity
+        scores or the euclidean distance.
 
         For euclidian distance: Lower scores are better (vector coordinates are closer to each other - hence more similar)
         For cosine similarity: Higher scores are better (vectors are more similar)
@@ -160,18 +160,16 @@ class TinyVectorStore:
     
 # --------- Example Usage -------------
 
-# Example
-
 print("loading embedding model...")
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L12-v2')
 docs = document.split("\n")
 
 print(f"Loaded {len(docs)} documents")
-vectorstore = TinyVectorStore.from_docs(docs, embedding_model=model, metric=similarity_metric.EUCLIDEAN)
+vectorstore = TinyVectorStore.from_docs(docs, embedding_model=model, metric=similarity_metric.COSINE)
 print(f"Building TinyVectorStore for querying with {len(docs)} documents")
 
 # Search for the most similar documents to a query
-query = "What is the quote?" 
+query = "Who wrote the article?" 
 results, execution_time = vectorstore.search(query, k=2)
 
 
